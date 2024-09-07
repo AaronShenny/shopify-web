@@ -1,1 +1,2 @@
 Django
+mysqlclient==2.2.4
