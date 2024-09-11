@@ -13,8 +13,8 @@ class Customers(models.Model):
 class Product(models.Model):
     pname = models.CharField(max_length=100)
     pdesc = models.TextField(max_length=1000)
-    stock = models.IntegerField(max_length=1000)
-    pprice = models.IntegerField(max_length=1000)
+    stock = models.IntegerField()
+    pprice = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
     images = models.ImageField(upload_to='images/',null=True , blank=True)
     def __str__(self):
