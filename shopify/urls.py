@@ -18,6 +18,7 @@ from django.urls import path
 from django.urls import include, path
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('wp-admin/', admin.site.urls),
+    path('admin/', include("wp_admin.urls")),
     path("", include("shop.urls")),
 ]
