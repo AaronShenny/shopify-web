@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<p>hii</p>
+<form method="post" action="{% url 'login' %}" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ frm.as_p }}
+    <button type="submit">Login</button>
+</form>
+
+{% endblock content %}

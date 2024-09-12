@@ -21,6 +21,7 @@ from django.conf.urls.static import static
 from django.conf import settings
 urlpatterns = [
     path('',  views.shop),
+    path('login/',views.login,name='login')
     # path('create/',views.CreateProduct, name='create'),
     # path('edit/<pk>',views.CreateProduct)
 ]
