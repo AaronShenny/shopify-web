@@ -19,6 +19,6 @@ from django.urls import include, path
 
 urlpatterns = [
     path('wp-admin/', admin.site.urls),
-    path('admin/', include("wp_admin.urls")),
+    path('admin/', include(('wp_admin.urls', 'wp_admin'), namespace='wp_admin')),
     path("", include("shop.urls")),
 ]

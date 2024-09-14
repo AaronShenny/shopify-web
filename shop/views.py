@@ -6,14 +6,14 @@ from django.contrib import messages
 def shop(request):
     products = Product.objects.all()  
     navbar = {'show_user_navbar': True}
-    if request.POST:
-        frm = ProductForm(request.POST,request.FILES)
-        print(request.FILES) 
-        if frm.is_valid():
-            frm.save()
-            return redirect('create')
-    else:
-        frm = ProductForm()
+    # if request.POST:
+    #     frm = ProductForm(request.POST,request.FILES)
+    #     print(request.FILES) 
+    #     if frm.is_valid():
+    #         frm.save()
+    #         return redirect('create')
+    # else:
+    #     frm = ProductForm()
     print(products)  # Add this line to check if products are being fetched
     return render(request, "index.html", {'products': products, 'navbar': navbar})
 
@@ -27,10 +27,14 @@ def login(request):
         if frm.is_valid():
             try:
                 # Corrected the get() method with keyword arguments
-                user = Customers.objects.get(name=request.POST['name'])
-                print(user)
-                print('Login Successful')
-                return redirect('/')  # You can also use reverse('home') if you have a URL name
+                user = Customers.objects.get(emailid=request.POST['emailid'])
+                userpass = request.POST['password']
+                if userpass == user.password:
+
+
+                    print(user)
+                    print('Login Successful')
+                    return redirect('/')  # You can also use reverse('home') if you have a URL name
             except Customers.DoesNotExist:
                 messages.error(request, 'User does not exist.')
             except Customers.MultipleObjectsReturned:

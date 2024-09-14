@@ -19,6 +19,9 @@ from django.urls import include, path
 from . import views
 from django.conf.urls.static import static
 from django.conf import settings
+
+app_name = 'shop'
+
 urlpatterns = [
     path('',  views.shop),
     path('login/',views.login,name='login')

@@ -1,10 +1,49 @@
 {% extends 'base.html' %}
 {% block content %}
-<p>hii</p>
-<form method="post" action="{% url 'login' %}" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ frm.as_p }}
-    <button type="submit">Login</button>
-</form>
+
+<section>
+    <div class="container pt-5">
+        <div class="container">
+            <!-- Display messages -->
+            {% if messages %}
+                <div>
+                    {% for message in messages %}
+                        <div class="alert alert-{{ message.tags }} text-danger" role="alert">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        
+            <!-- Your form or other content goes here -->
+        </div>
+        <div class="row">
+            <form method="post"  action="{% url 'login' %}" enctype="multipart/form-data">
+                <!-- Update URL pattern as necessary -->
+                {% csrf_token %}
+                {% if Error %}
+                <p class="error mt-3">Invalid Email ID or Password</p>
+                {% endif %}
+                {% if Error1 %}
+                <p class="error mt-3">Please Login First</p>
+                {% endif %}
+                <h1>Login</h1>
+                <div class="mb-3">
+                    {{ frm.emailid.label_tag }}
+                    {{ frm.emailid }} <!-- Render email field with Bootstrap styling -->
+                </div>
+                <div class="mb-3">
+                    {{ frm.password.label_tag }}
+                    {{ frm.password }} <!-- Render password field with Bootstrap styling -->
+                </div>
+                <div class="row mt-4 p-2">
+                    <input type="submit" class="btn btn-success p-3" style="border-radius: 9px;" value="Login">
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+
 
 {% endblock content %}

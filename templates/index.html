@@ -6,16 +6,18 @@
 
 <div class="row row-cols-1 row-cols-md-5 p-1 g-3">
     {% for product in products %}
+    {% if product.show %}
     <div class="col">
         <div class="card h-100 w-70">
             <img src="media/{{product.images}}" class="img-fluid" style="width: 400px; height: 345px; object-fit: cover;" alt="Product Image">
             <div class="card-body">
                 <h5 class="card-title">{{ product.pname }}</h5>
                 <p class="card-text">{{ product.pdesc }}</p>
-                <a href="{{product.id}}" class="btn btn-primary">{{product.pprice}}</a>
+                <a href="{% url 'wp_admin:edit' product.id %}" class="btn btn-primary">{{product.pprice}}</a>
             </div>
         </div>
     </div>
+    {% endif %}
     {% empty %}
     <p>No products available.</p>
     {% endfor %}

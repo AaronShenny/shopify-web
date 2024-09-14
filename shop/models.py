@@ -17,6 +17,7 @@ class Product(models.Model):
     stock = models.IntegerField()
     pprice = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
+    show = models.BooleanField(default=True)
     images = models.ImageField(upload_to='images/',null=True , blank=True)
     def __str__(self):
         return self.pname
