@@ -25,7 +25,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'shop',
-    'wp_admin'
+    'wp_admin',
+    'shops',
 ]
 
 MIDDLEWARE = [
